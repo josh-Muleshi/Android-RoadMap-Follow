@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import java.util.Objects;
 import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,10 +20,13 @@ public class MainActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
 
         timer = new Timer();
-        timer.schedule(() -> {
-            Intent i = new Intent(this,);
-            startActivity(i);
-            finish();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
         }, 5000);
 
     }
