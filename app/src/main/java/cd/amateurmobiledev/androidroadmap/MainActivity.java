@@ -1,5 +1,6 @@
 package cd.amateurmobiledev.androidroadmap;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -33,12 +34,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 15);
             }
         });
+    }
 
-        txtNom = findViewById(R.id.txtNom);
-        String nom = this.getIntent().getExtras().getString("nom");
-        txtNom.setText(nom);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 15){
+            if (resultCode == 12) {
+                txtNom = findViewById(R.id.txtNom);
+                String nom = data.getStringExtra("nom");
+                txtNom.setText(nom);
+            }
+        }
     }
 }

@@ -29,9 +29,10 @@ public class HomeActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                 Intent intent = new Intent();
                  intent.putExtra("nom", edtNom.getText().toString());
-                 startActivity(intent);
+                 setResult(12,intent);
+                 finish();
              }
         });
     }
