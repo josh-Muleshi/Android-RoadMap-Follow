@@ -6,16 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="227dp"
-        android:src="@drawable/img2"
+    <LinearLayout
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img2" />
+
+    </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
@@ -23,31 +33,31 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toBottomOf="@+id/banner">
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp">
 
             <TextView
                 android:id="@+id/txtNom"
-                android:text="nom"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"/>
+                android:text="nom"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <Button
                 android:id="@+id/btnEdit"
-                android:backgroundTintMode="add"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="Editer le profil"
                 android:layout_marginLeft="30dp"
-                android:layout_toRightOf="@id/txtNom"/>
+                android:layout_toRightOf="@id/txtNom"
+                android:backgroundTintMode="add"
+                android:text="Editer le profil" />
 
         </RelativeLayout>
 
@@ -57,13 +67,13 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:text="Description"/>
+            android:text="Description" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="15dp">
 
             <ImageView
@@ -71,16 +81,16 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_centerVertical="true"
-                android:src="@drawable/ic_baseline_add_location_24"/>
+                android:src="@drawable/ic_baseline_add_location_24" />
 
             <TextView
                 android:id="@+id/txtLocalisation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="localisation"
                 android:layout_marginLeft="4dp"
-                android:layout_toRightOf="@id/loca_img"/>
+                android:layout_toRightOf="@id/loca_img"
+                android:text="localisation" />
 
         </RelativeLayout>
 
@@ -95,16 +105,16 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_centerVertical="true"
-                android:src="@drawable/ic_baseline_link_24"/>
+                android:src="@drawable/ic_baseline_link_24" />
 
             <TextView
                 android:id="@+id/txtWebSite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="Web site"
                 android:layout_marginLeft="4dp"
-                android:layout_toRightOf="@id/webSite_img"/>
+                android:layout_toRightOf="@id/webSite_img"
+                android:text="Web site" />
 
         </RelativeLayout>
 
@@ -119,16 +129,16 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_centerVertical="true"
-                android:src="@drawable/ic_baseline_date_range_24"/>
+                android:src="@drawable/ic_baseline_date_range_24" />
 
             <TextView
                 android:id="@+id/txtDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="Date"
                 android:layout_marginLeft="4dp"
-                android:layout_toRightOf="@id/date_img"/>
+                android:layout_toRightOf="@id/date_img"
+                android:text="Date" />
 
         </RelativeLayout>
 

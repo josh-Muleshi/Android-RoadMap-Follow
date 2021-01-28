@@ -17,8 +17,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Objects.requireNonNull(getSupportActionBar()).hide();
-
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
