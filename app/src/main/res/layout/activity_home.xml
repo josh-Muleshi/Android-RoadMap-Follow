@@ -1,147 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
-    <LinearLayout
-        android:id="@+id/banner"
+    <EditText
+        android:id="@+id/edtNom"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/img2" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/banner">
+        android:hint="Name"
+        android:inputType="text"/>
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="15dp">
+    <EditText
+        android:id="@+id/edtDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Biographie"
+        android:inputType="textLongMessage"/>
+    <EditText
+        android:id="@+id/edtLocalisation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Localisation"
+        android:inputType="text"/>
 
-            <TextView
-                android:id="@+id/txtNom"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="nom"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+    <EditText
+        android:id="@+id/edtWebSite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Web Site"
+        android:inputType="text"/>
 
-            <Button
-                android:id="@+id/btnEdit"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_toRightOf="@id/txtNom"
-                android:backgroundTintMode="add"
-                android:text="Editer le profil" />
+    <EditText
+        android:id="@+id/edtDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Date"
+        android:inputType="date"/>
 
-        </RelativeLayout>
+    <Button
+        android:id="@+id/save"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="save"
+        android:layout_gravity="center"/>
 
-        <TextView
-            android:id="@+id/txtDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:text="Description" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="15dp">
-
-            <ImageView
-                android:id="@+id/loca_img"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_baseline_add_location_24" />
-
-            <TextView
-                android:id="@+id/txtLocalisation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="4dp"
-                android:layout_toRightOf="@id/loca_img"
-                android:text="localisation" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp">
-
-            <ImageView
-                android:id="@+id/webSite_img"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_baseline_link_24" />
-
-            <TextView
-                android:id="@+id/txtWebSite"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="4dp"
-                android:layout_toRightOf="@id/webSite_img"
-                android:text="Web site" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp">
-
-            <ImageView
-                android:id="@+id/date_img"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_baseline_date_range_24" />
-
-            <TextView
-                android:id="@+id/txtDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="4dp"
-                android:layout_toRightOf="@id/date_img"
-                android:text="Date" />
-
-        </RelativeLayout>
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

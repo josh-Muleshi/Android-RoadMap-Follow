@@ -4,28 +4,41 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import java.util.Objects;
-import java.util.Timer;
-import java.util.TimerTask;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Timer timer;
+    private TextView txtNom;
+    private TextView txtDesc;
+    private TextView txtLoc;
+    private TextView txtWebSite;
+    private TextView txtDate;
+
+    private Button btnEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
+        txtDesc = findViewById(R.id.txtDescription);
+        txtLoc = findViewById(R.id.txtLocalisation);
+        txtWebSite = findViewById(R.id.txtWebSite);
+        txtDate = findViewById(R.id.txtDate);
+
+        btnEdit = findViewById(R.id.btnEdit);
+        btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
+            public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                 startActivity(intent);
-                finish();
             }
-        }, 5000);
+        });
 
+        txtNom = findViewById(R.id.txtNom);
+        String nom = this.getIntent().getExtras().getString("nom");
+        txtNom.setText(nom);
     }
 }
