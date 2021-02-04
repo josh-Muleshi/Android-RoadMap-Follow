@@ -31,6 +31,7 @@ public class HomeActivity extends AppCompatActivity {
              public void onClick(View view) {
                  Intent intent = new Intent();
                  intent.putExtra("nom", edtNom.getText().toString());
+                 intent.putExtra("desc", edtDesc.getText().toString());
                  setResult(12,intent);
                  finish();
              }

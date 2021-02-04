@@ -46,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == 12) {
                 txtNom = findViewById(R.id.txtNom);
                 String nom = data.getStringExtra("nom");
+                String desc = data.getStringExtra("desc");
                 txtNom.setText(nom);
+                txtDesc.setText(desc);
             }
         }
     }
