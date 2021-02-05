@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,13 +43,12 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
+        final String name = NameInput.getText().toString();
         PlayBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO
+                Toast.makeText(getApplicationContext(),"Well done " + name,Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 }
