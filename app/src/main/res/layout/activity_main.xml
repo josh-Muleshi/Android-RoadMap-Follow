@@ -8,12 +8,14 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/greeting_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:text="welcome! what's your name?"/>
 
     <EditText
+        android:id="@+id/name_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -21,6 +23,7 @@
         android:hint="Please type your name"/>
 
     <Button
+        android:id="@+id/play_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Let's play"
