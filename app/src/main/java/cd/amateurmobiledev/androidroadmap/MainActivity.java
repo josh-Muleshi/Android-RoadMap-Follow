@@ -43,10 +43,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        final String name = NameInput.getText().toString();
+
+
         PlayBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String name = NameInput.getText().toString();
                 Toast.makeText(getApplicationContext(),"Well done " + name,Toast.LENGTH_SHORT).show();
             }
         });
