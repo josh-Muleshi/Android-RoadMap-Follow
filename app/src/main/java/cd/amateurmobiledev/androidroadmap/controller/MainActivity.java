@@ -12,17 +12,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import cd.amateurmobiledev.androidroadmap.R;
+import cd.amateurmobiledev.androidroadmap.model.User;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView GreetingTxt;
     private EditText NameInput;
     private Button PlayBtn;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        user = new User();
 
         GreetingTxt = findViewById(R.id.greeting_txt);
         NameInput = findViewById(R.id.name_input);
@@ -51,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         PlayBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String firstName = NameInput.getText().toString();
+                user.setFirstName(firstName);
                 Intent i = new Intent(MainActivity.this, GameActivity.class);
                 startActivity(i);
             }
