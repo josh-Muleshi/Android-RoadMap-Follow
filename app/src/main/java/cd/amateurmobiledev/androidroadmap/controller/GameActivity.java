@@ -3,8 +3,10 @@ package cd.amateurmobiledev.androidroadmap.controller;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +15,7 @@ import cd.amateurmobiledev.androidroadmap.R;
 import cd.amateurmobiledev.androidroadmap.model.Question;
 import cd.amateurmobiledev.androidroadmap.model.QuestionBanck;
 
-public class GameActivity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView txtQuestion;
     private Button btnAns1;
@@ -42,9 +44,24 @@ public class GameActivity extends AppCompatActivity {
         btnAns3.setTag(2);
         btnAns4.setTag(3);
 
+        btnAns1.setOnClickListener(this);
+        btnAns2.setOnClickListener(this);
+        btnAns3.setOnClickListener(this);
+        btnAns4.setOnClickListener(this);
+
         currentQuestion = questionBanck.getQuestion();
         this.displayQuestion(currentQuestion);
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        int responceIndex = view.getTop();
+
+        if (responceIndex == currentQuestion.getAnswerIndex()){
+            Toast.makeText(this, "well done", Toast.LENGTH_SHORT).show();
+        }
+        else Toast.makeText(this, "bad answer", Toast.LENGTH_SHORT).show();
     }
 
     public void displayQuestion(final Question question){
