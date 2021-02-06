@@ -56,12 +56,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        int responceIndex = view.getTop();
+        int responceIndex =(int) view.getTag();
 
         if (responceIndex == currentQuestion.getAnswerIndex()){
             Toast.makeText(this, "well done", Toast.LENGTH_SHORT).show();
         }
-        else Toast.makeText(this, "bad answer", Toast.LENGTH_SHORT).show();
+        else{
+            Toast.makeText(this, "bad answer", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void displayQuestion(final Question question){
