@@ -1,6 +1,8 @@
 package cd.amateurmobiledev.androidroadmap;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -48,9 +50,8 @@ public class MainActivity extends AppCompatActivity {
         PlayBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                String name = NameInput.getText().toString();
-                Toast.makeText(getApplicationContext(),"Well done " + name,Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(MainActivity.this, GameActivity.class);
+                startActivity(i);
             }
         });
     }
