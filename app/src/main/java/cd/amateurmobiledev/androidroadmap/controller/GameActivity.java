@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -34,11 +36,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     public static final String BUNDLE_EXTRA_SCORE = "BUNDLE_EXTRA_SCORE";
 
+    private boolean enableTouchEvents;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        enableTouchEvents = true;
 
         score = 0;
         mNumberOfQuestions = 4;
@@ -78,13 +84,25 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "bad answer", Toast.LENGTH_SHORT).show();
         }
 
-        if (--mNumberOfQuestions == 0) {
-            // No question left, end the game
-            endGame();
-        } else {
-            currentQuestion = questionBanck.getQuestion();
-            displayQuestion(currentQuestion);
-        }
+        enableTouchEvents = false;
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                enableTouchEvents = true;
+                if (--mNumberOfQuestions == 0) {
+                    // No question left, end the game
+                    endGame();
+                } else {
+                    currentQuestion = questionBanck.getQuestion();
+                    displayQuestion(currentQuestion);
+                }
+            }
+        }, 2000); // LENGTH_SHORT is usually 2 second long
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        return enableTouchEvents && super.dispatchTouchEvent(ev);
     }
 
     private void endGame() {
