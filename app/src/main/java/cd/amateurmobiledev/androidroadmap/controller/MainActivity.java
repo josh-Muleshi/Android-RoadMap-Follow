@@ -1,5 +1,6 @@
 package cd.amateurmobiledev.androidroadmap.controller;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText NameInput;
     private Button PlayBtn;
     private User user;
+
+    private static final int GAME_ACTIVITY_REQUEST_CODE = 42;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +61,17 @@ public class MainActivity extends AppCompatActivity {
                 String firstName = NameInput.getText().toString();
                 user.setFirstName(firstName);
                 Intent i = new Intent(MainActivity.this, GameActivity.class);
-                startActivity(i);
+                startActivityForResult(i, GAME_ACTIVITY_REQUEST_CODE);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (GAME_ACTIVITY_REQUEST_CODE == requestCode && RESULT_OK == resultCode) {
+            // Fetch the score from the Intent
+            int score = data.getIntExtra(GameActivity.BUNDLE_EXTRA_SCORE, 0);
+        }
     }
 }
