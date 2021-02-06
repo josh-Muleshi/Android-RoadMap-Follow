@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -24,10 +25,14 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int GAME_ACTIVITY_REQUEST_CODE = 42;
 
+    private SharedPreferences preferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        preferences = getPreferences(MODE_PRIVATE);
 
         user = new User();
 
@@ -60,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String firstName = NameInput.getText().toString();
                 user.setFirstName(firstName);
+                preferences.edit().putString("FirstName", user.getFirstName()).apply();
+
                 Intent i = new Intent(MainActivity.this, GameActivity.class);
                 startActivityForResult(i, GAME_ACTIVITY_REQUEST_CODE);
             }
@@ -72,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         if (GAME_ACTIVITY_REQUEST_CODE == requestCode && RESULT_OK == resultCode) {
             // Fetch the score from the Intent
             int score = data.getIntExtra(GameActivity.BUNDLE_EXTRA_SCORE, 0);
+            preferences.edit().putInt("score", score).apply();
         }
     }
 }
