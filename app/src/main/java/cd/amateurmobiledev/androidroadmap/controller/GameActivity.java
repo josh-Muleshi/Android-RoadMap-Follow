@@ -1,10 +1,12 @@
-package cd.amateurmobiledev.androidroadmap;
+package cd.amateurmobiledev.androidroadmap.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+
+import cd.amateurmobiledev.androidroadmap.R;
 
 public class GameActivity extends AppCompatActivity {
 
