@@ -1,7 +1,9 @@
 package cd.amateurmobiledev.androidroadmap.controller;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,10 +28,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private QuestionBanck questionBanck;
     private Question currentQuestion;
 
+    private int mNumberOfQuestions;
+    private int score;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        score = 0;
+        mNumberOfQuestions = 4;
 
         questionBanck = this.generateQuestions();
 
@@ -56,15 +64,40 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        int responceIndex =(int) view.getTag();
+        int responseIndex =(int) view.getTag();
 
-        if (responceIndex == currentQuestion.getAnswerIndex()){
+        if (responseIndex == currentQuestion.getAnswerIndex()){
             Toast.makeText(this, "well done", Toast.LENGTH_SHORT).show();
+            score++;
         }
         else{
             Toast.makeText(this, "bad answer", Toast.LENGTH_SHORT).show();
         }
+
+        if (--mNumberOfQuestions == 0) {
+            // No question left, end the game
+            endGame();
+        } else {
+            currentQuestion = questionBanck.getQuestion();
+            displayQuestion(currentQuestion);
+        }
     }
+
+    private void endGame() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Well done!")
+                .setMessage("Your score is " + score)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
+                .create()
+                .show();
+    }
+
 
     public void displayQuestion(final Question question){
         txtQuestion.setText(question.getQuestion());
