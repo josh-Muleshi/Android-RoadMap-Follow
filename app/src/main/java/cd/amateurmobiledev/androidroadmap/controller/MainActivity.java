@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
                 String firstName = NameInput.getText().toString();
                 user.setFirstName(firstName);
                 preferences.edit().putString("FirstName", user.getFirstName()).apply();
+                String name = preferences.getString("firstName", "");
+                GreetingTxt.setText(name);
 
                 Intent i = new Intent(MainActivity.this, GameActivity.class);
                 startActivityForResult(i, GAME_ACTIVITY_REQUEST_CODE);
